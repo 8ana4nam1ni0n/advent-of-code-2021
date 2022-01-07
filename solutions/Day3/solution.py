@@ -2,7 +2,6 @@ from ..Utilities import read_input_file
 from functools import reduce
 from typing import Callable
 
-
 def transpose(data: list[str]) -> list[str]:
     return list(zip(*data))
 
