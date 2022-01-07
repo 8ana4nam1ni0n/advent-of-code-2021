@@ -17,6 +17,7 @@ def part2(data: list[int]) -> int:
 
 def solution(filename) -> None:
   parsed_data = parse_data_to_int(read_input_file(filename))
-  print(f"====== Solution ======")
+  print(f"====== Solution Day 1 ======")
   print(f"Part 1: {part1(parsed_data)}")
   print(f"Part 2: {part2(parsed_data)}")
+  print(f"============================")
