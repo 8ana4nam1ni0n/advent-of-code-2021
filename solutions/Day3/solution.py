@@ -11,14 +11,20 @@ def is_greater_than(x, y):
 def is_less_than(x, y):
     return x < y
 
+def is_greater_equal(x, y):
+    return x >= y
+
+def is_less_equal(x, y):
+    return x <= y
+
 def get_common_bit_helper(bitstream: str, commonness: Callable) -> str:
     return '1' if commonness(bitstream.count('1'), len(bitstream) / 2) else '0'
 
-def get_most_common_bit(bitstream: str) -> str:
-    return get_common_bit_helper(bitstream, is_greater_than)
+def get_most_common_bit(bitstream: str, commonness=is_greater_than) -> str:
+    return get_common_bit_helper(bitstream, commonness)
 
-def get_least_common_bit(bitstream: str) -> str:
-    return get_common_bit_helper(bitstream, is_less_than)
+def get_least_common_bit(bitstream: str, commonness=is_less_than) -> str:
+    return get_common_bit_helper(bitstream, commonness)
 
 def calculate_gamma_rate(data: list[str]) -> str:
     return ''.join(get_most_common_bit(bitstream) for bitstream in data)
@@ -30,7 +36,20 @@ def calculate_epsilon_rate(gamma_rate: int) -> str:
 
 def calculate_power_consumption(data: list[str]) -> int:
     gamma_rate = calculate_gamma_rate(data)
-    return int(gamma_rate, 2) * int(calculate_epsilon_rate(gamma_rate),2)
+    return int(gamma_rate, 2) * int(calculate_epsilon_rate(gamma_rate), 2)
+
+
+# Part 2
+def filter_by_most_common_bit(bitstreams: list[tuple[str]], bit_position: int) -> list[str]:
+    mcb: str = get_most_common_bit(bitstreams[bit_position], commonness=is_greater_equal)
+    return list(zip(*[bitstream for bitstream in zip(*bitstreams) if bitstream[bit_position] == mcb]))
+
+
+def get_oxygen_generator_rating(data: list[str]) -> str:
+    pass
+
+def calculate_life_support_rating():
+    pass
 
 def part1(data: list[str]):
     return calculate_power_consumption(data)
