@@ -1,5 +1,4 @@
 from ..Utilities import read_input_file
-from functools import reduce
 from typing import Callable
 
 def transpose(data: list[str]) -> list[str]:
@@ -46,7 +45,12 @@ def filter_by_most_common_bit(bitstreams: list[tuple[str]], bit_position: int) -
 
 
 def get_oxygen_generator_rating(data: list[str]) -> str:
-    pass
+    o2_rating: list[str]
+    for bit_position, bitstream in enumerate(data):
+        mcb: str = get_most_common_bit(data[bit_position], commonness=is_greater_equal)
+        o2_rating = list(zip(*[b for b in zip(*data) if b[bit_position] == mcb]))
+
+        # TODO write exit condition
 
 def calculate_life_support_rating():
     pass
