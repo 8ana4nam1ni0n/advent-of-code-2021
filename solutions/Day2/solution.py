@@ -1,6 +1,7 @@
+from __future__ import annotations
 from typing import Protocol
-from ..Utilities import read_input_file
 from dataclasses import dataclass
+from ..Utilities import read_input_file
 
 @dataclass
 class Submarine:

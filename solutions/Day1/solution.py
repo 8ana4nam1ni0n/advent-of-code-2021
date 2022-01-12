@@ -1,3 +1,4 @@
+from __future__ import annotations
 from ..Utilities import read_input_file
 
 def parse_data_to_int(data: list[str]) -> list[int]:
